@@ -1,0 +1,5 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="5" width="40" height="40" rx="8" fill="#FF69B4"/>
+    <path d="M15 20H35V24H15V20ZM15 28H30V32H15V28ZM15 36H35V40H15V36Z" fill="white"/>
+    <text x="60" y="30" font-family="Arial, sans-serif" font-size="24" fill="#8a2be2">Easy Invoice</text>
+</svg>
