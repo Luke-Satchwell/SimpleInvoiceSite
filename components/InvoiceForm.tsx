@@ -6,39 +6,38 @@ import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 
 export default function InvoiceForm() {
-  const { register, handleSubmit, control, watch, setValue } =
-    useForm<InvoiceFormInputs>({
-      defaultValues: {
-        invoiceNumber: "",
-        issueDate: "",
-        dueDate: "",
-        sellerName: "",
-        sellerAddress: "",
-        sellerPhone: "",
-        sellerEmail: "",
-        buyerName: "",
-        buyerAddress: "",
-        buyerPhone: "",
-        buyerEmail: "",
-        items: [
-          {
-            description: "",
-            quantity: 1,
-            unitPrice: 0,
-            totalPrice: 0,
-          },
-        ],
-        subtotal: 0,
-        taxRate: 20,
-        taxAmount: 0,
-        totalAmount: 0,
-        paymentMethods: "",
-        paymentInstructions:
-          "Please Contact us in order to process payment. Use the invoice number as the payment reference.",
-        latePaymentTerms:
-          "Payment is due within 30 days. Late payments will incur a fee of 1.5% per month.",
-      },
-    });
+  const { register, control, watch, setValue } = useForm<InvoiceFormInputs>({
+    defaultValues: {
+      invoiceNumber: "",
+      issueDate: "",
+      dueDate: "",
+      sellerName: "",
+      sellerAddress: "",
+      sellerPhone: "",
+      sellerEmail: "",
+      buyerName: "",
+      buyerAddress: "",
+      buyerPhone: "",
+      buyerEmail: "",
+      items: [
+        {
+          description: "",
+          quantity: 1,
+          unitPrice: 0,
+          totalPrice: 0,
+        },
+      ],
+      subtotal: 0,
+      taxRate: 20,
+      taxAmount: 0,
+      totalAmount: 0,
+      paymentMethods: "",
+      paymentInstructions:
+        "Please Contact us in order to process payment. Use the invoice number as the payment reference.",
+      latePaymentTerms:
+        "Payment is due within 30 days. Late payments will incur a fee of 1.5% per month.",
+    },
+  });
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -61,15 +60,11 @@ export default function InvoiceForm() {
     setValue("totalAmount", subtotal + taxAmount);
   }, [watchItems, watchTaxRate, setValue]);
 
-  //   generate invoice number when comonent mounts
+  //   generate invoice number when component mounts
   useEffect(() => {
     const invoiceNumber = generateInvoiceNumber();
     setValue("invoiceNumber", invoiceNumber);
   }, [setValue]);
-
-  //   const onSubmit: SubmitHandler<InvoiceFormInputs> = (data) => {
-  //     console.log(data);
-  //   };
 
   return (
     <div>
