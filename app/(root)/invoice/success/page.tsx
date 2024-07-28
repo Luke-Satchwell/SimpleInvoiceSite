@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function SuccessPage() {
@@ -22,12 +23,12 @@ export default function SuccessPage() {
           </p>
         </div>
         <div className="text-center">
-          <a
+          <Link
             href="/"
             className="inline-block bg-gradient-to-r from-primaryPink to-primaryPurple text-white font-bold py-2 px-6 rounded-md shadow-md transition-transform transform hover:scale-105"
           >
             Go Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
