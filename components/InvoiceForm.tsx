@@ -2,8 +2,8 @@
 
 import { createInvoice } from "@/lib/invoice.actions";
 import { generateInvoiceNumber } from "@/lib/utils";
-import React, { useEffect } from "react";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
 
 export default function InvoiceForm() {
   const { register, handleSubmit, control, watch, setValue } =
@@ -222,7 +222,10 @@ export default function InvoiceForm() {
             <h3 className="invoice-section-header">Items/Services</h3>
             <div id="items-container">
               {fields.map((item, index) => (
-                <div key={item.id} className="mb-6 flex space-x-4">
+                <div
+                  key={item.id}
+                  className="mb-6 flex flex-wrap md:flex-row space-x-4 space-y-1"
+                >
                   <input
                     type="text"
                     {...register(`items.${index}.description`)}
